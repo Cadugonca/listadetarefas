@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
+
+
+div{
+    
+    font-family: 'Raleway';
+
+
+.tabela{
+    margin-left: 15%;
+    margin-top: 50px;
+    border-collapse: collapse;
+    width: 70%;
+    text-align: center;
+ 
+    thead{
+        border-bottom: 2px solid white;
+        font-size: 24px;
+        font-weight: bold;
+
+        th{
+            padding-bottom: 25px;
+        }
+
+    }
+        #tbody{
+            text-align: center;
+
+            tr{
+                padding-top: 25px;
+            }
+                }
+    }
+}
+
+img{
+    cursor: pointer;
+   }
+
+#newtask{
+    padding: 2px;
+    font-family: 16px;
+    border: 2px solid black;
+    border-radius: 7px;
+    font-family: 'Raleway';
+    text-align: center;
+}
+
+#tar{
+    border: none;
+    font-family: 'Raleway';
+    text-align: center;
+    font-size: 16px;
+    color: #0C70F2;
+}
+
+.icon{
+    width: 30px;
+    cursor: pointer;
+}
+
+.addnew{
+    width: 100%;
+    padding-top: 25px;
+
+    form{
+        
+       text-align: center;
+
+        input{
+            border: none;
+            font-family: 'Raleway', italic;
+            font-size: 16px;
+            padding: 15px;
+        }
+        button{
+            width: 2px;
+            border: none;
+        }
+    
+    }
+}
+
+.confirmation-dialog {
+    background-color: white;
+    border-radius: 12px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 700px;
+    height: 500px;
+
+        h1{
+            margin-top: 130px;
+            border: none;
+            background-color: white;
+            color: black;
+            font-family: 'Raleway';
+        }
+
+        button{       
+            margin-top: 80px;  
+            font-size: 16px;
+            border: 2px solid;
+            background-color: transparent;
+            color: white;
+            font-family: 'Raleway';
+            cursor: pointer;
+            padding: 25px 65px 25px 65px;
+        }
+
+        #sim{
+            margin-left: 20px;
+            color: black;
+            border-radius: 10px;
+            margin-right: 20px;
+        }
+
+        #nao{
+            border-radius: 10px;
+            background-color: #1e2022;
+        }
+
+
+
+
+
+
+
+
+    
+  }
+  
+

@@ -1,8 +1,6 @@
-// Importando as dependências necessárias
 import React, { useState } from 'react';
 import "./index.scss";
 
-// Componente para troca de imagem
 const ImageToggle = () => {
   const [imageSrc, setImageSrc] = useState("/uncheck.svg");
 
@@ -19,25 +17,21 @@ const ImageToggle = () => {
   );
 };
 
-// Componente List/principal
 const List = () => {
-  // State para armazenar as tarefas
   const [tasks, setTasks] = useState([
     { id: 1, name: "Tarefa 1" },
     { id: 2, name: "Tarefa 2" },
     { id: 3, name: "Tarefa 3" },
   ]);
 
-  // State para armazenar o nome da nova tarefa e o ID da tarefa em edição
   const [newTaskName, setNewTaskName] = useState("");
   const [editTaskId, setEditTaskId] = useState(null);
+  const [showConfirmation, setShowConfirmation] = useState(false);
 
-  // Função para lidar com a mudança de valor do input
   const handleInputChange = (event) => {
     setNewTaskName(event.target.value);
   };
 
-  // Função para lidar com o envio do formulário - aqui eu pedi ajuda para o Chat GPT, não consegui entender a lógica sozinho
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
@@ -67,7 +61,6 @@ const List = () => {
     setNewTaskName("");
   };
 
-  // Função para lidar com a edição de uma tarefa
   const handleEditTask = (taskId) => {
     const task = tasks.find((task) => task.id === taskId);
     if (task) {
@@ -76,25 +69,23 @@ const List = () => {
     }
   };
 
-  // Função para lidar com a exclusão de uma tarefa
   const handleDeleteTask = (taskId) => {
+    setShowConfirmation(true);
     setEditTaskId(taskId);
   };
 
-  // Função para confirmar a exclusão da tarefa
   const handleConfirmDelete = () => {
     const updatedTasks = tasks.filter((task) => task.id !== editTaskId);
     setTasks(updatedTasks);
     setEditTaskId(null);
+    setShowConfirmation(false);
   };
 
-  // Função para cancelar a exclusão da tarefa
   const handleCancelDelete = () => {
     setEditTaskId(null);
+    setShowConfirmation(false);
   };
 
-
-  // Vai aparecer na tela
   return (
     <div>
       <table className="tabela">
@@ -124,7 +115,7 @@ const List = () => {
                 {editTaskId === task.id ? (
                   <>
                     <img className='icon' src="/save.png" alt="save" onClick={handleFormSubmit} />
-                    <img className='icon' src="/cancel.png" alt="cancel" onClick={() => setEditTaskId(null)} />
+                    <img className='icon' src="/cancel.png" alt="cancel" onClick={handleCancelDelete} />
                   </>
                 ) : (
                   <>
@@ -138,12 +129,12 @@ const List = () => {
         </tbody>
       </table>
 
-      {editTaskId !== null && (
+      {showConfirmation && (
         <div className="confirmation-dialog">
           <h1>Tem certeza que deseja excluir a tarefa?</h1>
 
-          <button id='sim' onClick={handleConfirmDelete}>Sim</button>
           <button id='nao' onClick={handleCancelDelete}>Não</button>
+          <button id='sim' onClick={handleConfirmDelete}>Sim</button>
         </div>
       )}
 
